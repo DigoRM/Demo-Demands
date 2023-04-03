@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container my-4">
+    <h1>User Members</h1>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Unsolved Tasks</th>
+          <th>Solved Tasks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+        <tr>
+          <td><a href="{% url 'user_reports_specific' pk=user.pk %} ">{{ user.username }}</a> </td>
+          <td><a href="{% url 'user_tasks_assigned' pk=user.pk %}">{{ user.num_tasks }}</a></td>
+          <td><a href="{% url 'user_tasks_solved' pk=user.pk %}">{{ user.num_solved_tasks }}</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

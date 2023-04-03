@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="{% url 'new_task' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+
+    <button type="submit">ok</button>
+</form>
+
+{% endblock %}

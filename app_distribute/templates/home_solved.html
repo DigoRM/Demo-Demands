@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-4">
+    <h2>Solved Tasks by CI Team</h2>
+    {% if user_tasks %}
+        {% for username, tasks in user_tasks.items %}
+            <h4>{{ username }} ({{ tasks|length }})</h4>
+            <div  style=" max-height: 1000px; overflow-x:auto;overflow-y:auto;">
+                <table class="table table-striped table-bordered">
+                    <thead style="position: sticky;top: 0;background-color: #fff; z-index: 1;">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Task Sent</th>
+                            <th>Order Link</th>
+                            <th>Order Date</th>
+                            <th>Parceiro</th>
+                            <th>Loja</th>
+                            <th>Empresa</th>
+                            <th>Integracao</th>
+                            <th>Origin</th>
+                            <th>Name</th>
+                            <th>SKU</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for task in tasks %}
+                            <tr>
+                                <td>{{ task.order_id }}</td>
+                                <td>{{task.task_added_at|date:"d/m/Y"}} </td>
+                                <td><a href="{{ task.order_link }}">{{ task.order_link }}</a></td>
+                                <td>{{ task.created_at|date:"d/m/Y" }}</td>
+                                <td><a href="{% url 'parceiro_tasks' pk=task.parceiro.pk %} ">{{ task.partner }}</a></td>
+                                <td>{{ task.loja }}</td>
+                                <td>{{ task.empresa }}</td>
+                                <td>{{ task.integracao }}</td>
+                                <td>{{ task.origin }}</td>
+                                <td>{{ task.name }}</td>
+                                <td>{{ task.sku }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <br><br>
+
+        {% endfor %}
+    {% else %}
+        <p>No tasks assigned.</p>
+    {% endif %}
+</div>
+{% endblock %}

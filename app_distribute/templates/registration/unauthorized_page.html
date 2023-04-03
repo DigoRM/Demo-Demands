@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %} Unauthorized {% endblock %}
+
+{% block content %}
+<div class="container" style="display: flex; justify-content: center; align-items: center;">
+    <img src="/media/gandalf.gif">
+</div>
+<p><h3 class="subtitle is-5" style="display: flex; justify-content: center; align-items: center;">I'm sorry {{user}}, it seems you don't have the required permission for this.</h3></p> 
+
+{% endblock %}

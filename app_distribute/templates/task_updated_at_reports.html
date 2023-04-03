@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Orders <strong>solved at</strong> Reports</h1>
+
+<div class="row">
+    <div class="col-md-6">
+      <div id="chart"></div>
+      <script>
+        var graphJSON = {{ graphJSON|safe }};
+        Plotly.plot('chart', graphJSON);
+      </script>
+    </div>
+    <div class="col-md-6">
+      <div id="chart2"></div>
+      <script>
+        var graphJSON_day = {{ graphJSON_day|safe }};
+        Plotly.plot('chart2', graphJSON_day);
+      </script>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div id="chart3"></div>
+      <script>
+        var graphJSON_month = {{ graphJSON_month|safe }};
+        Plotly.plot('chart3', graphJSON_month);
+      </script>
+    </div>
+    <div class="col-md-6">
+      <div id="chart4"></div>
+      <script>
+        var graphJSON_week_month = {{ graphJSON_week_month|safe }};
+        Plotly.plot('chart4', graphJSON_week_month);
+      </script>
+    </div>
+  </div>
+  
+
+{% endblock %}

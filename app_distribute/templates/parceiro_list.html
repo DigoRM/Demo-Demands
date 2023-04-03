@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container my-4">
+    <h1 class="mb-4">Parceiros</h1>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Parceiro Name</th>
+          <th>Unsolved Tasks</th>
+          <th>Solved Tasks</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for parceiro in parceiros %}
+          <tr>
+              <td>
+                <li><a href="{% url 'parceiro_reports_specific' parceiro.id %}">{{ parceiro.name }}</a></li>
+
+              </td>
+            <td>
+              <a href="{% url 'parceiro_tasks' pk=parceiro.pk %}">
+                {{ parceiro.num_tasks }}
+              </a>
+            </td>
+            <td>
+              <a href="{% url 'parceiro_solved_tasks' pk=parceiro.pk %}">
+                {{ parceiro.num_solved_tasks }}
+              </a>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

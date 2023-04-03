@@ -1,0 +1,82 @@
+{% extends 'blog/base.html' %}
+{% block title %} User Profile {% endblock %}
+
+{% block content %}
+
+<style>
+	.profile-pic{
+		max-width: 300px;
+		max-height:300px;
+		margin: 0 auto;
+		border-radius: 50%;
+	}
+
+
+</style>
+
+<br>
+<div class="box ">
+    <a class="button is-danger" style="margin-bottom:20px;" href="{% url 'home' %}"> &#8592; Back</a>
+
+    <div class="columns is-horizontal">
+        <div class="column is-4">
+            <div class="card card-body">
+                <div calss="card-header">
+                    <div class="card-header-title is-centered is-vcentered">
+                        <strong class="title is-5">{{ customer.user.username }}</strong>
+                        
+                    </div>
+                    <div class="has-text-centered">
+                        <h4 class="subtitle is-size-6">{{customer.user.email}} </h4>
+                    </div>
+                    <hr>
+
+                </div>
+
+                <div style="text-align: center;">
+                    {% if customer.profile_pic %}
+                    <img class="profile-pic" src="{{customer.profile_pic.url}}" >
+                    {% endif %}
+                </div>            
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="card-content">
+                    <div class="container">
+                        <p><strong>Name: </strong>{{ customer.name }}</p>
+                    </div>
+                    <div class="container">
+                        <p><strong>Company: </strong>{{ customer.company }}</p>
+                    </div>
+                    <div class="container">
+                        <p><strong>Role: </strong>{{ customer.role }}</p>
+                    </div>
+                    <div class="container">
+                        <p><strong>Skills: </strong><div class="card">{{ customer.skills|linebreaks }}</div></p>
+                    </div>
+                    <div class="container">
+                        <p><strong>Interests: </strong><div class="card">{{ customer.interests|linebreaks }}</div></p> 
+
+                    </div>
+ 
+                           
+   
+   
+               </div>
+            </div>
+            
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}

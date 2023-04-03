@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{user.username}} Reports</h1>
+<hr>
+
+<div class="row">
+    <div class="col-md-6">
+      <div id="chart"></div>
+      <script>
+        var graphJSON = {{ graphJSON|safe }};
+        Plotly.plot('chart', graphJSON);
+      </script>
+    </div>
+    <div class="class col-md-6">
+        <div id="chart2"></div>
+        <script>
+            var graphJSON2 = {{ graphJSON2|safe }};
+            Plotly.plot('chart2', graphJSON2);
+        </script>
+    </div>
+    <div class="class col-md-12">
+      <hr>
+      <h3 style="text-align: center;">Tasks Sent to CI Reports</h3>
+    </div>
+
+    <div class="class col-md-6">
+        <div id="chart3"></div>
+        <script>
+            var graphJSON_weekday = {{ graphJSON_weekday|safe }};
+            Plotly.plot('chart3', graphJSON_weekday);
+        </script>
+    </div>
+    <div class="col-md-6">
+      <div id="chart4"></div>
+      <script>
+        var graphJSON_day = {{ graphJSON_day|safe }};
+        Plotly.plot('chart4', graphJSON_day);
+      </script>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div id="chart6"></div>
+      <script>
+        var graphJSON_week_month = {{ graphJSON_week_month|safe }};
+        Plotly.plot('chart6', graphJSON_week_month);
+      </script>
+    </div>
+    <div class="col-md-6">
+      <div id="chart5"></div>
+      <script>
+        var graphJSON_month = {{ graphJSON_month|safe }};
+        Plotly.plot('chart5', graphJSON_month);
+      </script>
+    </div>
+  </div>
+
+<!-- Tasks updated_at -->
+
+  <div class="row">
+    <div class="class col-md-12">
+      <hr>
+      <h3 style="text-align: center;">Tasks Solved by CI Reports</h3>
+    </div>
+
+    <div class="class col-md-6">
+        <div id="chart7"></div>
+        <script>
+            var graphJSON_weekday2 = {{ graphJSON_weekday2|safe }};
+            Plotly.plot('chart7', graphJSON_weekday2);
+        </script>
+    </div>
+    <div class="col-md-6">
+      <div id="chart8"></div>
+      <script>
+        var graphJSON_day2 = {{ graphJSON_day2|safe }};
+        Plotly.plot('chart8', graphJSON_day2);
+      </script>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-6">
+      <div id="chart9"></div>
+      <script>
+        var graphJSON_month2 = {{ graphJSON_month2|safe }};
+        Plotly.plot('chart9', graphJSON_month2);
+      </script>
+    </div>
+    <div class="col-md-6">
+      <div id="chart10"></div>
+      <script>
+        var graphJSON_week_month2 = {{ graphJSON_week_month2|safe }};
+        Plotly.plot('chart10', graphJSON_week_month2);
+      </script>
+    </div>
+  </div>
+  
+
+{% endblock %}

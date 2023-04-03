@@ -1,0 +1,7 @@
+
+- Decidir e implementar ordenação padrão dass tasks: 
+	* parceiro ou task_added_at? 
+	* Teria como implementar um ranking de parceiros e mostrar primeiro todas as tasks do parceiro que mais tem tasks pendentes?
+- Implementar o paginator
+- Ajustar as notificações do django -> rever projeto FoodOnline
+- Ajustar filtros (tem como fazer sem javascript?)

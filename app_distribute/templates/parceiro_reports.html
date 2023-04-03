@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Partner Reports</h1>
+
+<div id="chart"></div>
+<script>
+    var graphJSON = {{ graphJSON|safe }};
+    Plotly.plot('chart', graphJSON);
+</script>
+
+<div id="chart2"></div>
+<script>
+    var graphJSON2 = {{ graphJSON2|safe }};
+    Plotly.plot('chart2', graphJSON2);
+</script>
+{% endblock %}

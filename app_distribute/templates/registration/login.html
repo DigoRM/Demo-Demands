@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+
+{% block content %}
+    
+
+<style>
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: white ;
+		}
+		.user_card {
+			width: 380px;
+			margin-top: auto;
+			margin-bottom: auto;
+			background: black;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+
+		.form_container {
+			margin-top: 20px;
+		}
+
+		#form-title{
+			color: #fff;
+			
+		}
+
+		.login_btn {
+			width: 100%;
+			background: #33ccff ;
+			color: white ;
+		}
+		.login_btn:focus {
+			box-shadow: none ;
+			outline: 0px ;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+			background: #f7ba5b ;
+			color: white ;
+			border: 0 ;
+			border-radius: 0.25rem 0 0 0.25rem ;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none ;
+			outline: 0px ;
+		}
+
+		#messages{
+			background-color: white;
+			color: red;
+			padding: 10px;
+			margin-top: 10px;
+		}
+</style>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-4">
+            <div class="card bg-dark text-white">
+                <div class="card-header">
+                    <h4 class="text-center mb-0">LOGIN</h4>
+                </div>
+                <div class="card-body " style="display: flex;justify-content: center;align-items: center; text-align: center;">
+  
+			  <form method="POST" action="{% url 'login'%} ">
+				{% csrf_token %}
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<span class="input-group-text bg-primary text-white">
+							<i class="fas fa-user"></i>
+						</span>
+					</div>
+				  <input type="text" name="username" placeholder="Username..." class="form-control">
+				</div>
+				<div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text bg-primary text-white">
+                                <i class="fas fa-envelope-square"></i>
+                            </span>
+                        </div>
+				  <input type="password" name="password" placeholder="Password..." class="form-control" >
+				</div>
+  
+				<div class="d-flex justify-content-center mt-3 login_container">
+				  <button class="btn btn-primary mt-3" type="submit" value="Login"><strong>Ok</strong></button>
+				</div>
+			  </form>
+  
+			</div>
+			{% for message in messages %}
+			<div class="row">
+			  <div class="col">
+				<strong><p style="color: #f7ba5b ;padding: 20px;margin-top: 20px;">* {{message}}</p></strong> 
+  
+			  </div>
+			</div>
+  
+  
+			{% endfor %}
+  
+			<div class="mt-4">
+			  <div class="d-flex justify-content-center links" style="color:white">
+				Don't have an account? <a href="{% url 'register' %}" class="ml-2" style="color: #f7ba5b;">Sign Up</a>
+			  </div>
+			  <div class="d-flex justify-content-center links" style="color:white">
+				Forgot Password? <a href="{% url 'reset_password' %} " class="ml-2" style="color: #f7ba5b;">Reset Password</a>
+			  </div>     
+			</div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+	
+
+{% endblock %}
